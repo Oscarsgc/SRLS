@@ -1,0 +1,35 @@
+<% if current_user != nil %>
+  <% if current_user.rol == 1 %>
+<h1>Listando Logs de <%= @user.email %></h1>
+<br>
+<% if @user.status%>
+	<h3>Estado: Activo</h3>
+<%else%>
+	<h3>Estado: Inactivo</h3>
+<%end%>
+<br>
+<table border=1>
+  <tr>
+  	<th>Hora Entrada</th>
+    <th>Hora Salida</th>
+  </tr>
+
+<% @user.user_logs.each do |user_log| %>
+  <tr>
+    <td><Center><%= user_log.entrada %></Center></td>
+    <td><Center><%= user_log.salida %></Center></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= button_to 'Lista de Usuarios', user_managers_path, :method => :get  %><br />
+<%= button_to 'Log de Modificaciones', user_logs_path, :method => :get  %>
+  <%else%>
+    <br>
+    Usted No tiene permitido ingresar a esta pagina
+  <%end%>
+<%else%>
+  <br>
+  Usted No tiene permitido ingresar a esta pagina
+<%end%>

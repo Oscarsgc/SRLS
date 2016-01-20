@@ -1,0 +1,117 @@
+<p id="notice"><%= notice %></p>
+<br>
+<CENTER><p>
+<h2>DATOS DEL LIBRO</h2>
+</p>
+
+<p>
+  <b>Codigo Del Libro:</b>
+  <%= @death_record_book.codigo %>
+</p>
+
+<p>
+  <b>Numero de Libro:</b>
+  <%= @death_record_book.numero %>
+</p>
+
+<p>
+  <b>Parroquia de Pertenecia:</b>
+  <%= @death_record_book.parroquia %>
+</p>
+
+<p>
+  <b>Cantidad de Paginas Del Libro:</b>
+  <%= @death_record_book.paginas %>
+</p>
+
+<p>
+  <b>Cantidad de Partidas Por Pagina:</b>
+  <%= @death_record_book.partidas_pagina %>
+</p>
+
+<!--p>
+  <b>Validado:</b>
+  <%= @death_record_book.validado %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @death_record_book.user %>
+</p-->
+<br>
+<%= button_to 'Editar', edit_death_record_book_path(@death_record_book), :method => :get %>
+
+</CENTER>
+<div align="left"><%= button_to 'Volver', death_record_books_path, :method => :get %>
+</div>
+
+<Center>
+<h2>Partidas:</h2>
+<table border=1>
+  <tr>
+    <th>Tomo del Libro</th>
+    
+    <th>Numero del Libro</th>
+    
+    <th>Pagina</th>
+    
+    <th>Nombre</th>
+    
+    <th>Fecha</th>
+    
+    <!--th>Edad</th>
+    <th>Motivo muerte</th>
+    <th>Tipo hijo</th>
+    <th>Padre</th>
+    <th>Madre</th-->
+    <th>Lugar sepultura</th>
+    
+    <!--th>Celebrante</th-->
+    <!--th>Validado</th>
+    <th>User</th>
+    <th>Death record book</th-->
+    
+  </tr>
+
+<% @death_record_book.death_record_items.each do |death_record_item| %>
+  <tr>
+    <td><CENTER><%= death_record_item.tomo_libro %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.numero %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.pagina %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.nombre %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.fecha %></CENTER></td>
+    
+    <!--td><%= death_record_item.edad %></td>
+    <td><%= death_record_item.motivo_muerte %></td>
+    <td><%= death_record_item.tipo_hijo %></td>
+    <td><%= death_record_item.padre %></td>
+    <td><%= death_record_item.madre %></td-->
+    <td><CENTER><%= death_record_item.lugar_sepultura %></CENTER></td>
+    
+    <!--td><%= death_record_item.celebrante %></td-->
+    <!--td><%= death_record_item.validado %></td>
+    <td><%= death_record_item.user %></td>
+    <td><%= death_record_item.death_record_book %></td-->
+    <td><%= link_to 'Ver', death_record_item %></td>
+    <td><%= link_to 'Editar', edit_death_record_item_path(death_record_item) %></td>  <!--td><%= link_to 'Eliminar', death_record_item, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
+</Center>
+<br><br>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("button").click(function(){
+        $("#hide").toggle();
+    });
+});
+</script>
+<Center><button>Formulario de Partidas</button></Center>
+<div id="hide" style="display:none">
+<%= render "death_record_items/form" %>
+</div>

@@ -1,0 +1,72 @@
+<h1>Libros de Bautizo</h1>
+<br>
+<%= button_to 'Crear Nuevo Libro', new_baptism_book_path, :method => :get %>
+<br>
+
+<!--%= link_to "Busquedas", "$('#hide').toggle()" %><br-->
+<div id="hide">
+<br>
+<form method="GET" action="/baptism_books/search">
+	Codigo: <input type="text" name="codigo"> &nbsp;&nbsp;&nbsp; Parroquia: <input type="text" name="parroquia">
+	&nbsp;&nbsp;&nbsp; <input type="submit" value="Filtrar">
+</form>
+<br>
+<br>
+<form method="GET" action="/baptism_books/searchName">
+    Nombre: <input type="text" name="nombre"> &nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Buscar">
+</form>
+</div>
+<br>
+<br>
+<CENTER>
+<table border="1">
+  <tr>
+    <th><%=link_to "Codigo", :sort => "Codigo" %></th>
+    
+    <th>Numero de Libro</th>
+    
+    <th>Cantidad de Paginas</th>
+    
+    <th>Partidas Por Pagina</th>
+    
+    <!--th>Validado</th>
+    <th>User</th-->
+    <th><%=link_to "Parroquia", :sort => "Parroquia" %></th>
+    
+  </tr>
+<% @baptism_books.each do |baptism_book| %>
+  <tr>
+    <td><CENTER><%= baptism_book.codigo %></CENTER></td>
+    
+    <td><CENTER><%= baptism_book.numero %></CENTER></td>
+    
+    <td><CENTER><%= baptism_book.paginas %></CENTER></td>
+    
+    <td><CENTER><%= baptism_book.partidas_pagina %></CENTER></td>
+    
+    <!--td><%= baptism_book.validado %></td>
+    <td><%= baptism_book.user %></td-->
+    <td><CENTER><%= baptism_book.parroquia %></CENTER></td>
+    
+    <td><%= link_to 'Ver', baptism_book %></td>
+    <td><%= link_to 'Editar', edit_baptism_book_path(baptism_book) %></td>
+    <!--td><%= link_to 'Eliminar', baptism_book, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
+<br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Libros", '/validators/pending_index/baptism_books'%> |
+<% end %>
+<%= link_to "Ver validaciones de Libros", '/validators/not_valid_index/Libro de Bautizo'%>
+<br><br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Partidas", '/validators/pending_index/baptism_items'%> |
+<% end %>
+<%= link_to "Ver validaciones de Partidas", '/validators/not_valid_index/Partida de Bautizo'%>
+<br><br>
+<%= link_to "Ver Todas las Partidas", '/baptism_items'%>
+</CENTER>
+
+

@@ -1,0 +1,23 @@
+<h1>Todas las parroquias</h1>
+<%= button_to 'Nueva Parroquia', new_church_path, :method => :get  %>
+<CENTER>
+<table border="1">
+  <tr>
+    <th><%=link_to "Nombre", :sort => "Nombre" %></th>
+    
+    <th><%=link_to "Vicaria", :sort => "Vicaria"%></th>
+    
+  </tr>
+
+<% @churches.each do |church| %>
+  <tr>
+    <td><CENTER><%= church.nombre %></CENTER></td>
+    
+    <td><CENTER><%= church.vicaria %></CENTER></td>
+    <!--td><%= link_to 'Mostrar', church %></td>
+    <td><%= link_to 'Editar', edit_church_path(church) %></td>
+    <td><%= link_to 'Eliminar', church, method: :delete, data: { confirm: 'Seguro de eliminar la parroquia?' } %></td-->
+  </tr>
+<% end %>
+</table>
+</CENTER>

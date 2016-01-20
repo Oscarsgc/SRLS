@@ -1,0 +1,9 @@
+<h1>Editar Logs de Cambios</h1>
+
+<%= render 'form' %>
+
+<center><%= button_to 'Ver', @change_log :method => :get %></center>
+
+<div align=left>
+<%= button_to 'Volver', change_logs_path, :method => :get %>
+</div>

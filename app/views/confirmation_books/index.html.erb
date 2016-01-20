@@ -1,0 +1,66 @@
+<h1>Libros de Confirmación</h1>
+<%= button_to 'Crear Nuevo Libro', new_confirmation_book_path, :method => :get %>
+<br>
+<div id="hide">
+<br>
+<form method="GET" action="/confirmation_books/search">
+	Codigo: <input type="text" name="codigo"> &nbsp;&nbsp;&nbsp; Parroquia: <input type="text" name="parroquia">
+	&nbsp;&nbsp;&nbsp; <input type="submit" value="Filtrar">
+</form>
+<br>
+<br>
+<form method="GET" action="/confirmation_books/searchName">
+    Nombre: <input type="text" name="nombre"> &nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Buscar">
+</form>
+</div>
+<br>
+<br>
+<CENTER>
+<table border=1>
+  <tr>
+    <th><%=link_to "Codigo", :sort => "Codigo" %></th>
+    
+    <th>Numero</th>
+    
+    <th>Paginas</th>
+    
+    <th>Partidas pagina</th>
+    <!--th>Validado</th-->
+    <!--th>User</th-->
+   
+  </tr>
+
+<% @confirmation_books.each do |confirmation_book| %>
+  <tr>
+    <td><center><%= confirmation_book.codigo %></center></td>
+    
+    <td><center><%= confirmation_book.numero %></center></td>
+    
+    <td><center><%= confirmation_book.paginas %></center></td>
+    
+    <td><center><%= confirmation_book.partidas_pagina %></center></td>
+    
+    <!--td><%= confirmation_book.validado %></td-->
+    <!--td><%= confirmation_book.user %></td-->
+    <td><%= link_to 'Ver', confirmation_book %></td>
+    <td><%= link_to 'Editar', edit_confirmation_book_path(confirmation_book) %></td>
+    <!--td><%= link_to 'Eliminar', confirmation_book, method: :delete, data: { confirm: 'Seguro?' } %></td-->
+  </tr>
+<% end %>
+
+</table>
+<br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Libros", '/validators/pending_index/confirmation_books'%> |
+<% end %>
+<%= link_to "Ver validaciones de Libros", '/validators/not_valid_index/Libro de Confirmacion'%>
+<br><br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Partidas", '/validators/pending_index/confirmation_items'%> |
+<% end %>
+<%= link_to "Ver validaciones de Partidas", '/validators/not_valid_index/Partida de Confirmacion'%>
+<br>
+<br>
+<%= link_to "Ver Todas las Partidas", '/confirmation_items'%>
+</CENTER>

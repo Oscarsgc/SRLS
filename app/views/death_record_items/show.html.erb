@@ -1,0 +1,88 @@
+<p id="notice"><%= notice %></p>
+<br>
+<CENTER><p>
+<h2>DATOS DE LA PARTIDA</h2>
+</p>
+
+<p>
+  <b>Tomo del libro:</b>
+  <%= @death_record_item.tomo_libro %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @death_record_item.numero %>
+</p>
+
+<p>
+  <b>Pagina:</b>
+  <%= @death_record_item.pagina %>
+</p>
+
+
+<p>
+  <b>Nombre:</b>
+  <%= @death_record_item.nombre %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @death_record_item.fecha %>
+</p>
+
+<p>
+  <b>Edad:</b>
+  <%= @death_record_item.edad %>
+</p>
+
+<p>
+  <b>Motivo de la muerte:</b>
+  <%= @death_record_item.motivo_muerte %>
+</p>
+
+<p>
+  <b>Tipo de hijo:</b>
+  <%= @death_record_item.tipo_hijo %>
+</p>
+
+<p>
+  <b>Padre:</b>
+  <%= @death_record_item.padre %>
+</p>
+
+<p>
+  <b>Madre:</b>
+  <%= @death_record_item.madre %>
+</p>
+
+<p>
+  <b>Lugar de sepultura:</b>
+  <%= @death_record_item.lugar_sepultura %>
+</p>
+
+<p>
+  <b>Celebrante:</b>
+  <%= @death_record_item.celebrante %>
+</p>
+
+<!--p>
+  <b>Validado:</b>
+  <%= @death_record_item.validado %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @death_record_item.user %>
+</p-->
+
+<!--p>
+  <b>Death record book:</b>
+  <%= @death_record_item.death_record_book %>
+</p-->
+
+</CENTER>
+<br>
+<br>
+<!--%= link_to 'Editar', edit_death_record_item_path(@death_record_item) %-->
+<DIV align="Left"><a href = "/death_record_books/<%= @death_record_item.death_record_book.id %>"> Volver </a></DIV>
+<DIV align="Right"><a href = "/death_record_items/<%= @death_record_item.id %>/print"> Imprimir </a></DIV>

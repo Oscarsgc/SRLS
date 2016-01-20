@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+    <title>Srls</title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+  <br>
+  <br>
+  <br>
+    <%= render 'layouts/header' %>
+    <div class="container">
+        <% flash.each do |key, value| %>
+         <% next if key == :timedout %>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,71 @@
+<% if current_user != nil %>
+	<% if current_user.rol == 1 %>
+		
+<h1>Lista de Usuarios</h1>
+
+<br>	
+<form method="GET" action="/user_managers/search">
+	BUSCAR USUARIO:   
+	<input type="text" name="email">
+	<input type="submit" value="Buscar">
+</form>
+<br>	
+
+<br>
+<table border=1>
+<tr>
+<th> Id </th>
+<th> Correo electronico </th>
+<th> Rol </th>
+<th> Estado </th>
+
+</tr>
+<% @users.each do |user| %>
+	<tr>
+	<td><center> <%=user.id%></center> </td>
+	</td>
+	<td><center> <%= user.email %></center> </td>
+	</td>
+	<% if user.rol == 1%>
+		<td><center> Administrador</center> </td>
+	<% else %>
+		<% if user.rol == 2%>
+			<td><center> Redactor</center> </td>
+		<% else %>
+			<% if user.rol == 3%>
+				<td><center> Validador</center> </td>
+			<%end%>
+		<%end%>
+	<%end%>
+	</td>
+	<% if user.status %>
+		<td><center>Activo</center></td>
+	<% else %>
+		<td><center>Inactivo</center></td>
+	<% end %>
+	</td> 
+	<td><center> <a href="/user_managers/show/<%=user.id%>">Informacion de usuario</a></center> </td>
+	<td><center><a href="/user_logs/user_logs_index/<%=user.id%>">Sesiones</a></center> </td>
+	<td><center><a href="/user_logs/user_changes_index/<%=user.id%>">Modificaciones</a></center> </td>
+	<td><center> <a href="/user_managers/edit/<%=user.id%>" >Editar Rol</a></center> </td>
+	<td><center> <a href="/user_managers/edit_password/<%=user.id%>">Editar Password</a></center> </td>
+    <td><center> <a href="/user_managers/delete/<%=user.id%>">Cambiar Estado</a></center> </td>
+	</tr>
+<% end %>
+</table>
+<br>
+<a href="/user_managers/new"> Registrar Nuevo Usuario </a> 
+<br><br>
+<a href="/user_logs" > Ver Log de Usuarios </a> 
+<br><br>
+<a href="/user_logs/changes_index" > Ver Log de Modificaciones </a> 
+<br><br>
+
+	<%else%>
+		<br>
+		Usted NO tiene permitido ingresar a esta pagina
+	<%end%>
+<%else%>
+	<br>
+	Usted NO tiene permitido ingresar a esta pagina
+<%end%>

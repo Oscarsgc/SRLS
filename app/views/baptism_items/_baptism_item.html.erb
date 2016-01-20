@@ -1,0 +1,49 @@
+ <table border=1>
+  <tr>
+    <th>Tomo libro</th>
+    <th>Numero</th>
+    <th>Pagina</th>
+    <th><%=link_to "Nombre", :sort => "Nombre" %></th>
+    <th>Fecha bautizo</th>
+    <th>Celebrante</th>
+    <th>Lugar nacimiento</th>
+    <th>Fecha nacimiento</th>
+    <th>Tipo hijo</th>
+    <th>Padre</th>
+    <th>Madre</th>
+    <th>Feligreses</th>
+    <th>Padrino</th>
+    <th>Madrina</th>
+    <th>Oficialia</th>
+    <th>Encargado</th>
+    <!--th>Validado</th-->
+    <!--th>User</th-->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @baptism_book.baptism_items.each do |baptism_item| %>
+  <tr>
+    <td><%= baptism_item.tomo_libro %></td>
+    <td><%= baptism_item.numero %></td>
+    <td><%= baptism_item.pagina %></td>
+    <td><%= baptism_item.nombre %></td>
+    <td><%= baptism_item.fecha_bautizo %></td>
+    <td><%= baptism_item.celebrante %></td>
+    <td><%= baptism_item.lugar_nacimiento %></td>
+    <td><%= baptism_item.fecha_nacimiento %></td>
+    <td><%= baptism_item.tipo_hijo %></td>
+    <td><%= baptism_item.padre %></td>
+    <td><%= baptism_item.madre %></td>
+    <td><%= baptism_item.feligreses %></td>
+    <td><%= baptism_item.padrino %></td>
+    <td><%= baptism_item.madrina %></td>
+    <td><%= baptism_item.oficialia %></td>
+    <td><%= baptism_item.encargado %></td>
+    <!--td><%= baptism_item.validado %></td-->
+    <!--td><%= baptism_item.user %></td-->
+  </tr>
+<% end %>
+</table>
+
+

@@ -1,0 +1,68 @@
+<h1>Libros de Defuncion</h1>
+<%= button_to 'Crear Nuevo Libro', new_death_record_book_path, :method => :get %>
+<br>
+<div id="hide">
+<br>
+<form method="GET" action="/death_record_books/search">
+	Codigo: <input type="text" name="codigo"> &nbsp;&nbsp;&nbsp; Parroquia: <input type="text" name="parroquia">
+	&nbsp;&nbsp;&nbsp; <input type="submit" value="Filtrar">
+</form>
+<br>
+<br>
+<form method="GET" action="/death_record_books/searchName">
+    Nombre: <input type="text" name="nombre"> &nbsp;&nbsp;&nbsp;
+    <input type="submit" value="Buscar">
+</form>
+</div>
+<br>
+<br>
+<CENTER>
+<table border=1>
+  <tr>
+    <th><%=link_to "Codigo", :sort => "Codigo" %></th>
+    
+    <th>Numero</th>
+    
+    <th><%=link_to "Parroquia", :sort => "Parroquia" %></th>
+    
+    <th>Paginas</th>
+    
+    <th>Partidas pagina</th>
+    
+    <!--th>Validado</th>
+    <th>User</th-->
+    
+  </tr>
+<% @death_record_books.each do |death_record_book| %>
+  <tr>
+    <td><CENTER><%= death_record_book.codigo %></CENTER></td>
+    
+    <td><CENTER><%= death_record_book.numero %></CENTER></td>
+    
+    <td><CENTER><%= death_record_book.parroquia %></CENTER></td>
+    
+    <td><CENTER><%= death_record_book.paginas %></CENTER></td>
+    
+    <td><CENTER><%= death_record_book.partidas_pagina %></CENTER></td>
+    
+    <!--td><%= death_record_book.validado %></td>
+    <td><%= death_record_book.user %></td-->
+    <td><%= link_to 'Ver', death_record_book %></td>
+    <td><%= link_to 'Editar', edit_death_record_book_path(death_record_book) %></td>
+    <!--td><%= link_to 'Eliminar', death_record_book, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
+<br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Libros", '/validators/pending_index/death_record_books'%> |
+<% end %>
+<%= link_to "Ver validaciones de Libros", '/validators/not_valid_index/Libro de Defuncion'%>
+<br><br>
+<% if current_user.rol != 2 %>
+<%= link_to "Validar Partidas", '/validators/pending_index/death_record_items'%> |
+<% end %>
+<%= link_to "Ver validaciones de Partidas", '/validators/not_valid_index/Partida de Defuncion'%>
+<br><br>
+<%= link_to "Ver Todas las Partidas", '/death_record_items'%>
+</CENTER>

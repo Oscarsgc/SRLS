@@ -1,0 +1,62 @@
+<br><h1>Todas las Partidas de Defuncion</h1>
+<%= link_to 'Nueva Partida de Defuncion', new_death_record_item_path %>-->
+<br>
+<CENTER>
+<table border=1>
+  <tr>
+    <th>Nombre</th>
+    
+    <th>Libro de Defuncion</th> 
+    
+    <th>Pagina</th>
+    
+    <th>Numero</th>
+    
+    <!--th>Fecha</th>
+    <th>Edad</th>
+    <th>Motivo muerte</th>
+    <th>Tipo hijo</th>
+    <th>Padre</th>
+    <th>Madre</th>
+    <th>Lugar sepultura</th>
+    <th>Celebrante</th-->
+    <!--<th>Validado</th>
+    <th>User</th>-->
+    
+  </tr>
+
+<% @death_record_items.each do |death_record_item| %>
+  <tr>
+    <td><CENTER><%= death_record_item.nombre %></CENTER></td>
+        
+    <td><CENTER><%= link_to death_record_item.death_record_book.codigo, death_record_item.death_record_book %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.pagina %></CENTER></td>
+    
+    <td><CENTER><%= death_record_item.numero %></CENTER></td>
+    
+    <!--td><%= death_record_item.tomo_libro %></td>  
+    <td><%= death_record_item.fecha %></td>
+    <td><%= death_record_item.edad %></td>
+    <td><%= death_record_item.motivo_muerte %></td>
+    <td><%= death_record_item.tipo_hijo %></td>
+    <td><%= death_record_item.padre %></td>
+    <td><%= death_record_item.madre %></td>
+    <td><%= death_record_item.lugar_sepultura %></td>
+    <td><%= death_record_item.celebrante %></td-->
+    <!--td><%= death_record_item.validado %></td>
+    <td><%= death_record_item.user %></td-->
+    
+    <td><%= link_to 'Ver', death_record_item %></td>
+    <td><%= link_to 'Editar', edit_death_record_item_path(death_record_item) %></td>
+    <!--td><%= link_to 'Eliminar', death_record_item, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+  </tr>
+<% end %>
+</table>
+<br />
+</CENTER>
+<DIV Align=left>
+<%= button_to 'Volver', death_record_books_path, :method => :get %>  
+</DIV>
+
+

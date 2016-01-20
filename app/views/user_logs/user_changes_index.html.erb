@@ -1,0 +1,40 @@
+<% if current_user != nil %>
+  <% if current_user.rol == 1 %>
+<h1> Listando Cambios del usuario <%= @user.email %> </h1>
+<br>
+<% if @user.status%>
+	<h3> Estado: Activo </h3>
+<%else%>
+	<h3> Estado: Inactivo </h3>
+<%end%>
+<br>
+<table border=1>
+  <tr>
+  	<th>Fecha</th>
+  	<th>Tabla del Dato</th>
+    <th>Id del Dato</th>
+    <th>Usuario</th>
+  </tr>
+
+<% @user.updated_data_tables.each do |data| %>
+  <tr>
+  	<td><Center><%= data.created_at%></Center></td>
+  	<td><Center><%= data.source_table%></Center></td>
+    <td><Center><%= data.id_datum %></Center></td>
+    <td><Center><%= data.user.email %></Center></td>
+    <td><Center><a href="/user_logs/show_change_information/<%= data.id %>"> Ver </a></Center></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<a href="/user_logs/changes_index" > Log de Modificaciones </a> 
+<br />
+<%= link_to 'Lista de Usuarios', user_managers_path %>
+  <%else%>
+    <br>
+    Usted No tiene permitido ingresar a esta pagina
+  <%end%>
+<%else%>
+  <br>
+  Usted No tiene permitido ingresar a esta pagina
+<%end%>
