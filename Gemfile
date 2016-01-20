@@ -10,12 +10,14 @@ gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'protected_attributes'
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: [:production]
 
 #gem 'prawn'
 #gem 'prawn-rails'
@@ -46,3 +48,6 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+
+ruby "2.2.3"
