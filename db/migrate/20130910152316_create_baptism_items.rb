@@ -7,7 +7,7 @@ class CreateBaptismItems < ActiveRecord::Migration
       t.date :fecha_bautizo
       t.string :celebrante
       t.string :lugar_nacimiento
-      t.string :fecha_nacimiento
+      t.date :fecha_nacimiento
       t.string :tipo_hijo
       t.string :padre
       t.string :madre
